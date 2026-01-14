@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -17,8 +16,6 @@ class CodeContainer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final click = useState(false);
-
     return FCard(
       title: Text(code.name),
       subtitle: Text(code.code, maxLines: 2, overflow: .ellipsis),

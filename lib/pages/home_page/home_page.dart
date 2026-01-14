@@ -1,4 +1,6 @@
 // Flutter imports:
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -11,7 +13,6 @@ import 'package:rive/rive.dart';
 // Project imports:
 import 'package:switch_controller/pages/remocon_page/remocon_page.dart';
 import 'package:switch_controller/pages/send_code_page/send_code_page.dart';
-import 'package:switch_controller/widgets/code_container.dart';
 import 'package:switch_controller/widgets/custom_background.dart';
 import 'package:switch_controller/widgets/custom_rive_animation.dart';
 
@@ -20,16 +21,6 @@ class HomePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = useState(0);
-
-    final settingButton = FHeaderAction(
-      icon: const Icon(FIcons.ellipsis),
-      onPress: () {},
-    );
-
-    final headers = [
-      FHeader(title: Text('Code'), suffixes: [settingButton]),
-      FHeader(title: Text('RemoteController'), suffixes: [settingButton]),
-    ];
 
     final size = MediaQuery.sizeOf(context);
 

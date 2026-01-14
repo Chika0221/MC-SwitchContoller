@@ -13,8 +13,6 @@ class SendCodePage extends HookConsumerWidget {
   const SendCodePage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final size = MediaQuery.sizeOf(context);
-
     final codeStream = ref.watch(firebaseCodesStreamProvider);
 
     return Center(
