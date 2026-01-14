@@ -6,46 +6,42 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
+import 'package:switch_controller/infrastructure/providers/firebase_codes_stream_privider.dart';
+import 'package:switch_controller/models/infrared_code.dart';
+
 class CodeContainer extends HookConsumerWidget {
-  const CodeContainer({super.key});
+  const CodeContainer({super.key, required this.code});
+
+  final InfraredCode code;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final click = useState(false);
 
     return FCard(
-      // image: Container(
-      //   decoration: BoxDecoration(
-      //     image: DecorationImage(
-      //       image: AssetImage('avatar.png'),
-      //       fit: BoxFit.cover,
-      //     ),
-      //   ),
-      //   height: 200,
-      // ),
-      title: const Text('Gratitude'),
-      subtitle: const Text(
-        'The quality of being thankful; readiness to show appreciation for and to return kindness.',
-      ),
+      title: Text(code.name),
+      subtitle: Text(code.code, maxLines: 2, overflow: .ellipsis),
       child: SizedBox(
         height: 48,
-        child: (!(click.value))
+        child: (!(code.state))
             ? FButton(
                 onPress: () async {
-                  click.value = !click.value;
+                  final updateCode = code.copyWith(state: true);
+
+                  ref
+                      .read(firebaseCodesStreamProvider.notifier)
+                      .updateCodes(updateCode);
                   showFToast(
                     context: context,
-                    title: Text("押したぜ"),
+                    title: Text("コードを送信しました"),
                     duration: Duration(seconds: 2),
                   );
-
-                  Future.delayed(Duration(seconds: 2), () {
-                    click.value = !click.value;
-                  });
                 },
                 suffix: Icon(FIcons.send),
                 child: const Text('Send'),
               )
-            : Center(child: const FProgress(semanticsLabel: "aaa")),
+            : Center(child: const FProgress()),
       ),
     );
   }

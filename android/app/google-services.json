@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "831039039872",
+    "project_id": "mc-system-1a380",
+    "storage_bucket": "mc-system-1a380.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831039039872:android:0c02c1d04eb2a46433f965",
+        "android_client_info": {
+          "package_name": "michi.dev.switch_controller"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7WTAEmxu-wdznH34e8nh4hbtqNDnaqYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
