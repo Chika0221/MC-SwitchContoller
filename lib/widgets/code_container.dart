@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
@@ -16,29 +15,50 @@ class CodeContainer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return FCard(
-      title: Text(code.name),
-      subtitle: Text(code.code, maxLines: 2, overflow: .ellipsis),
-      child: SizedBox(
-        height: 48,
-        child: (!(code.state))
-            ? FButton(
-                onPress: () async {
+    // return FCard(
+    //   title: Text(code.name),
+    //   subtitle: Text(code.code, maxLines: 2, overflow: .ellipsis),
+    //   child: SizedBox(
+    //     height: 48,
+    //     child: (!(code.state))
+    //         ? FButton(
+    //             onPress: () async {
+    //               final updateCode = code.copyWith(state: true);
+
+    //               ref
+    //                   .read(firebaseCodesStreamProvider.notifier)
+    //                   .updateCodes(updateCode);
+    //               showFToast(
+    //                 context: context,
+    //                 title: Text("コードを送信しました"),
+    //                 duration: Duration(seconds: 2),
+    //               );
+    //             },
+    //             suffix: Icon(FIcons.send),
+    //             child: const Text('Send'),
+    //           )
+    //         : Center(child: const FProgress()),
+    //   ),
+    // );
+    return Card(
+      child: ListTile(
+        title: Text(code.name),
+        subtitle: Text(code.code, maxLines: 2, overflow: TextOverflow.ellipsis),
+        trailing: (!(code.state))
+            ? ElevatedButton(
+                onPressed: () async {
                   final updateCode = code.copyWith(state: true);
 
                   ref
                       .read(firebaseCodesStreamProvider.notifier)
                       .updateCodes(updateCode);
-                  showFToast(
-                    context: context,
-                    title: Text("コードを送信しました"),
-                    duration: Duration(seconds: 2),
-                  );
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text("コードを送信しました")));
                 },
-                suffix: Icon(FIcons.send),
                 child: const Text('Send'),
               )
-            : Center(child: const FProgress()),
+            : const CircularProgressIndicator(),
       ),
     );
   }

@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:firebase_core/firebase_core.dart';
-import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rive/rive.dart';
 
 // Project imports:
 import 'package:switch_controller/firebase_options.dart';
 import 'package:switch_controller/pages/home_page/home_page.dart';
+import 'package:switch_controller/theme/custom_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,22 +32,31 @@ class Application extends StatelessWidget {
     /// ```shell
     /// dart forui theme create [theme template].
     /// ```
-    final theme = FThemes.zinc.light;
+    // final theme = FThemes.zinc.light;
+
+    // return MaterialApp(
+    //   // supportedLocales: FLocalizations.supportedLocales,
+    //   // localizationsDelegates: const [...FLocalizations.localizationsDelegates],
+    //   // MaterialApp's theme is also animated by default with the same duration and curve.
+    //   // See https://api.flutter.dev/flutter/material/MaterialApp/themeAnimationStyle.html for how to configure this.
+    //   //
+    //   // There is a known issue with implicitly animated widgets where their transition occurs AFTER the theme's.
+    //   theme: theme.toApproximateMaterialTheme(),
+    //   // theme: CustomTheme().mainLightTheme,
+    //   builder: (_, child) => FAnimatedTheme(
+    //     data: theme,
+    //     child: FToaster(child: child!),
+    //   ),
+    //   // You can also replace FScaffold with Material Scaffold.
+    //   home: HomePage(),
+    // );
+
+    final cTheme = CustomTheme();
 
     return MaterialApp(
-      // supportedLocales: FLocalizations.supportedLocales,
-      // localizationsDelegates: const [...FLocalizations.localizationsDelegates],
-      // MaterialApp's theme is also animated by default with the same duration and curve.
-      // See https://api.flutter.dev/flutter/material/MaterialApp/themeAnimationStyle.html for how to configure this.
-      //
-      // There is a known issue with implicitly animated widgets where their transition occurs AFTER the theme's.
-      theme: theme.toApproximateMaterialTheme(),
-      // theme: CustomTheme().mainLightTheme,
-      builder: (_, child) => FAnimatedTheme(
-        data: theme,
-        child: FToaster(child: child!),
-      ),
-      // You can also replace FScaffold with Material Scaffold.
+      theme: cTheme.mainLightTheme,
+      darkTheme: cTheme.mainDarkTheme,
+      themeMode: ThemeMode.system,
       home: HomePage(),
     );
   }

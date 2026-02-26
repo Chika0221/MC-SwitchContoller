@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:easy_animated_indexed_stack/easy_animated_indexed_stack.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rive/rive.dart';
 
@@ -24,22 +23,18 @@ class HomePage extends HookConsumerWidget {
 
     final size = MediaQuery.sizeOf(context);
 
-    return FScaffold(
-      // header: headers[selectedIndex.value],
-      footer: FBottomNavigationBar(
-        index: selectedIndex.value,
-        onChange: (value) {
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex.value,
+        onTap: (value) {
           selectedIndex.value = value;
         },
-        children: [
-          FBottomNavigationBarItem(icon: Icon(FIcons.code), label: Text('コード')),
-          FBottomNavigationBarItem(
-            icon: Icon(FIcons.boxes),
-            label: Text('リモコン'),
-          ),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.code), label: 'コード'),
+          BottomNavigationBarItem(icon: Icon(Icons.tv), label: 'リモコン'),
         ],
       ),
-      child: CustomBackground(
+      body: CustomBackground(
         backGroundWidget: CustomRiveAnimation(
           size: size,
           fileLoader: FileLoader.fromAsset(

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:forui/forui.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
@@ -37,7 +36,7 @@ class SendCodePage extends HookConsumerWidget {
                 //     ),
                 //   ),
                 // ),
-                FHeader(title: Text("Code")),
+                AppBar(title: Text("Code")),
                 ...List.generate(codes.length, (index) {
                   return CodeContainer(code: codes[index]);
                 }),
@@ -45,7 +44,7 @@ class SendCodePage extends HookConsumerWidget {
             ),
           );
         },
-        loading: () => const FProgress(),
+        loading: () => const CircularProgressIndicator(),
         error: (error, stackTrace) => Text('Error: $error'),
       ),
     );
