@@ -14,25 +14,28 @@ import 'package:switch_controller/pages/remocon_page/remocon_page.dart';
 import 'package:switch_controller/pages/send_code_page/send_code_page.dart';
 import 'package:switch_controller/widgets/custom_background.dart';
 import 'package:switch_controller/widgets/custom_rive_animation.dart';
+import 'package:switch_controller/widgets/double_line_border_container.dart';
 
 class HomePage extends HookConsumerWidget {
   const HomePage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedIndex = useState(0);
+    final colorScheme = Theme.of(context).colorScheme;
 
     final size = MediaQuery.sizeOf(context);
 
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex.value,
-        onTap: (value) {
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: colorScheme.primaryContainer.withValues(alpha: 0.8),
+        destinations: [
+          NavigationDestination(icon: Icon(Icons.code), label: 'コード'),
+          NavigationDestination(icon: Icon(Icons.tv), label: 'リモコン'),
+        ],
+        selectedIndex: selectedIndex.value,
+        onDestinationSelected: (value) {
           selectedIndex.value = value;
         },
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.code), label: 'コード'),
-          BottomNavigationBarItem(icon: Icon(Icons.tv), label: 'リモコン'),
-        ],
       ),
       body: CustomBackground(
         backGroundWidget: CustomRiveAnimation(
