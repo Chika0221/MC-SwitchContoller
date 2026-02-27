@@ -8,7 +8,7 @@ import 'package:rive/rive.dart';
 
 // Project imports:
 import 'package:switch_controller/infrastructure/providers/connect_provider.dart';
-import 'package:switch_controller/pages/home_page/widgets/dock_mode_button.dart';
+import 'package:switch_controller/pages/home_page/widgets/custom_fab.dart';
 import 'package:switch_controller/widgets/custom_background.dart';
 import 'package:switch_controller/widgets/custom_rive_animation.dart';
 
@@ -20,8 +20,6 @@ class HomePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
-
-    final isConnected = ref.watch(isConnectedProvider);
 
     final size = MediaQuery.sizeOf(context);
 
@@ -50,7 +48,7 @@ class HomePage extends HookConsumerWidget {
           ),
         ),
       ),
-      floatingActionButton: (!isConnected) ? DockModeButton() : null,
+      floatingActionButton: CustomFab(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: CustomBackground(
         backGroundWidget: CustomRiveAnimation(

@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
+import 'package:switch_controller/pages/connect_page/connect_page.dart';
 import 'package:switch_controller/pages/dock_page/dock_page.dart';
 import 'package:switch_controller/pages/home_page/home_page.dart';
 import 'package:switch_controller/pages/remocon_page/remocon_page.dart';
@@ -61,6 +62,10 @@ final routeProvider = Provider((ref) {
         path: RoutePath.settings.path,
         builder: (context, state) => Container(),
       ),
+      GoRoute(
+        path: RoutePath.connect.path,
+        builder: (context, state) => ConnectPage(),
+      ),
     ],
   );
 });
@@ -70,6 +75,7 @@ enum RoutePath {
   dock('/dock'),
   sendCode('/code'),
   remocon('/remocon'),
+  connect('/connect'),
   settings('/settings');
 
   final String path;

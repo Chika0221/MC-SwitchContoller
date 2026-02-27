@@ -36,4 +36,4 @@ class SwitchControllerApp extends HookConsumerWidget {
   }
 }
 
-enum HeroTags { dockModeButton }
+enum HeroTags { customFab }

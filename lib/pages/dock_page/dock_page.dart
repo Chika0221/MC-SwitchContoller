@@ -23,7 +23,7 @@ class DockPage extends HookConsumerWidget {
     });
 
     return Hero(
-      tag: HeroTags.dockModeButton,
+      tag: HeroTags.customFab,
 
       child: Scaffold(
         backgroundColor: colorScheme.surfaceContainer,
