@@ -11,7 +11,6 @@ import 'package:rive/rive.dart';
 // Project imports:
 import 'package:switch_controller/firebase_options.dart';
 import 'package:switch_controller/infrastructure/providers/route_provider.dart';
-import 'package:switch_controller/pages/home_page/home_page.dart';
 import 'package:switch_controller/theme/custom_theme.dart';
 
 void main() async {
