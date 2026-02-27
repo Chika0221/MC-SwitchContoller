@@ -1,11 +1,13 @@
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 
 // Package imports:
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
+import 'package:switch_controller/pages/dock_page/dock_page.dart';
 import 'package:switch_controller/pages/home_page/home_page.dart';
 import 'package:switch_controller/pages/remocon_page/remocon_page.dart';
 import 'package:switch_controller/pages/send_code_page/send_code_page.dart';
@@ -15,8 +17,15 @@ final routeProvider = Provider((ref) {
     initialLocation: RoutePath.sendCode.path,
     routes: [
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) =>
-            HomePage(stfulNavigationShell: navigationShell),
+        builder: (context, state, navigationShell) {
+          // 画面の向きを縦に固定
+          SystemChrome.setPreferredOrientations([
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ]);
+
+          return HomePage(stfulNavigationShell: navigationShell);
+        },
         branches: [
           StatefulShellBranch(
             routes: [
@@ -39,7 +48,14 @@ final routeProvider = Provider((ref) {
 
       GoRoute(
         path: RoutePath.dock.path,
-        builder: (context, state) => Container(),
+        builder: (context, state) {
+          SystemChrome.setPreferredOrientations([
+            DeviceOrientation.landscapeLeft,
+            DeviceOrientation.landscapeRight,
+          ]);
+
+          return DockPage();
+        },
       ),
       GoRoute(
         path: RoutePath.settings.path,

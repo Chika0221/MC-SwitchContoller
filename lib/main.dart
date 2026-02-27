@@ -35,3 +35,5 @@ class SwitchControllerApp extends HookConsumerWidget {
     );
   }
 }
+
+enum HeroTags { dockModeButton }

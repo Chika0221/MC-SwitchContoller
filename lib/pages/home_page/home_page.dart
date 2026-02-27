@@ -7,6 +7,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rive/rive.dart';
 
 // Project imports:
+import 'package:switch_controller/infrastructure/providers/connect_provider.dart';
+import 'package:switch_controller/pages/home_page/widgets/dock_mode_button.dart';
 import 'package:switch_controller/widgets/custom_background.dart';
 import 'package:switch_controller/widgets/custom_rive_animation.dart';
 
@@ -18,6 +20,8 @@ class HomePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
+
+    final isConnected = ref.watch(isConnectedProvider);
 
     final size = MediaQuery.sizeOf(context);
 
@@ -34,7 +38,7 @@ class HomePage extends HookConsumerWidget {
           ),
         ),
         child: NavigationBar(
-          backgroundColor: colorScheme.primaryContainer.withValues(alpha: 0.8),
+          backgroundColor: colorScheme.primaryContainer,
           destinations: [
             NavigationDestination(icon: Icon(Icons.code), label: 'コード'),
             NavigationDestination(icon: Icon(Icons.tv), label: 'リモコン'),
@@ -46,6 +50,8 @@ class HomePage extends HookConsumerWidget {
           ),
         ),
       ),
+      floatingActionButton: (!isConnected) ? DockModeButton() : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: CustomBackground(
         backGroundWidget: CustomRiveAnimation(
           size: size,

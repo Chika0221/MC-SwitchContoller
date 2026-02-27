@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // Project imports:
 import 'package:switch_controller/infrastructure/providers/firebase_codes_stream_privider.dart';
 import 'package:switch_controller/widgets/code_container.dart';
+import 'package:switch_controller/widgets/custom_app_bar.dart';
 
 class SendCodePage extends HookConsumerWidget {
   const SendCodePage({super.key});
@@ -16,7 +17,7 @@ class SendCodePage extends HookConsumerWidget {
     final codeStream = ref.watch(firebaseCodesStreamProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text("Code")),
+      appBar: CustomAppBar(title: Text("Code")),
       body: Center(
         child: codeStream.when(
           data: (codes) {
