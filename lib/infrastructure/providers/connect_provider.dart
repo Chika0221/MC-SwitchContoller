@@ -3,6 +3,7 @@ import 'dart:async';
 
 // Package imports:
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
@@ -31,11 +32,6 @@ class ConnectableNotifier extends AsyncNotifier<List<Connect>> {
 
 class ConnectNotifier extends Notifier<Connect?> {
   final connect_collection = FirebaseFirestore.instance.collection('connect');
-
-  DocumentReference<Map<String, dynamic>>? get currentConnectDoc {
-    if (state == null) return null;
-    return connect_collection.doc(state?.hostID);
-  }
 
   @override
   Connect? build() {
@@ -67,14 +63,27 @@ class ConnectNotifier extends Notifier<Connect?> {
     );
 
     await updateConnect(connect);
+    state = null;
   }
 
   Future<void> setConnect(Connect connect) async {
     state = connect;
   }
 
+  Future<void> connect(Connect connect) async {
+    final deviceInfo = await DeviceInfoPlugin().androidInfo;
+
+    final connectedConnect = connect.copyWith(
+      controllerID: deviceInfo.id,
+      controllerName: deviceInfo.name,
+      state: ConnectState.connected,
+    );
+
+    await updateConnect(connectedConnect);
+  }
+
   Future<void> updateConnect(Connect connect) async {
-    await currentConnectDoc?.update(connect.toJson());
+    await connect_collection.doc(connect.hostID).update(connect.toJson());
     setConnect(connect);
   }
 }

@@ -71,7 +71,7 @@ class CustomFab extends HookConsumerWidget {
             icon: Icons.dock,
           )
         : LargeDoubleListButton(
-            onTap: () => context.go(RoutePath.connect.path),
+            onTap: () => context.push(RoutePath.connect.path),
             label: '接続',
             icon: Icons.add,
           );

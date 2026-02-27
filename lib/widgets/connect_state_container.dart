@@ -17,39 +17,44 @@ class ConnectStateContainer extends HookConsumerWidget {
 
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Container(
-      decoration: ShapeDecoration(
-        shape: StadiumBorder(),
-        color: colorScheme.surfaceContainer,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Row(
-          children: [
-            Text(
-              (connectState == ConnectState.connected)
-                  ? connect?.hostName ?? "接続済み"
-                  : "未接続",
-              style: Theme.of(
-                context,
-              ).textTheme.labelLarge!.copyWith(color: colorScheme.surface),
-            ),
-            const SizedBox(width: 4),
-            Container(
-              width: 12,
-              height: 12,
-
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: switch (connectState) {
-                  ConnectState.connected => Colors.green,
-                  ConnectState.ready => colorScheme.surface,
-                  ConnectState.offline => Colors.red,
-                  null => colorScheme.surface,
-                },
+    return InkWell(
+      onTap: () {
+        ref.read(connectProvider.notifier).disconnect();
+      },
+      child: Container(
+        decoration: ShapeDecoration(
+          shape: StadiumBorder(),
+          color: colorScheme.surfaceContainer,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Row(
+            children: [
+              Text(
+                (connectState == ConnectState.connected)
+                    ? connect?.hostName ?? "接続済み"
+                    : "未接続",
+                style: Theme.of(
+                  context,
+                ).textTheme.labelLarge!.copyWith(color: colorScheme.surface),
               ),
-            ),
-          ],
+              const SizedBox(width: 4),
+              Container(
+                width: 12,
+                height: 12,
+
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: switch (connectState) {
+                    ConnectState.connected => Colors.green,
+                    ConnectState.ready => colorScheme.surface,
+                    ConnectState.offline => Colors.red,
+                    null => colorScheme.surface,
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
