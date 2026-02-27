@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'package:switch_controller/infrastructure/providers/connect_provider.dart';
-import 'package:switch_controller/models/connect.dart';
 import 'package:switch_controller/widgets/connect_state_container.dart';
 
 class CustomAppBar extends HookConsumerWidget implements PreferredSizeWidget {
@@ -19,9 +17,6 @@ class CustomAppBar extends HookConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final connect = ref.watch(connectProvider);
-    final connectState = connect?.state;
-
     return AppBar(
       title: Text("Switch Controller"),
       centerTitle: true,

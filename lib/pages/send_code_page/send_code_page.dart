@@ -13,7 +13,6 @@ class SendCodePage extends HookConsumerWidget {
   const SendCodePage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final size = MediaQuery.sizeOf(context);
     final codeStream = ref.watch(firebaseCodesStreamProvider);
 
     return Scaffold(
@@ -27,19 +26,6 @@ class SendCodePage extends HookConsumerWidget {
                 mainAxisSize: .min,
                 spacing: 16,
                 children: [
-                  // SizedBox(height: 48 - 16),
-                  // GlassContainer.clearGlass(
-                  //   height: size.height * 0.3,
-                  //   borderRadius: BorderRadius.circular(8),
-                  //   borderColor: Colors.white24,
-                  //   borderWidth: 1.5,
-                  //   child: Center(
-                  //     child: Text(
-                  //       "コード一覧",
-                  //       style: Theme.of(context).textTheme.displayLarge,
-                  //     ),
-                  //   ),
-                  // ),
                   ...List.generate(codes.length, (index) {
                     return CodeContainer(code: codes[index]);
                   }),

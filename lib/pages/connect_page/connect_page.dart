@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod/src/framework.dart';
 
 // Project imports:
 import 'package:switch_controller/infrastructure/providers/connect_provider.dart';

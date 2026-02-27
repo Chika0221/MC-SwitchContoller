@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:async';
 
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
@@ -10,7 +9,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import 'package:switch_controller/infrastructure/providers/connect_provider.dart';
 import 'package:switch_controller/pages/connect_page/connect_page.dart';
 import 'package:switch_controller/pages/dock_page/dock_page.dart';
 import 'package:switch_controller/pages/home_page/home_page.dart';
