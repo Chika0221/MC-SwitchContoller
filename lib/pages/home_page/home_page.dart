@@ -1,41 +1,50 @@
 // Flutter imports:
-
-// Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:easy_animated_indexed_stack/easy_animated_indexed_stack.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:rive/rive.dart';
 
 // Project imports:
-import 'package:switch_controller/pages/remocon_page/remocon_page.dart';
-import 'package:switch_controller/pages/send_code_page/send_code_page.dart';
 import 'package:switch_controller/widgets/custom_background.dart';
 import 'package:switch_controller/widgets/custom_rive_animation.dart';
-import 'package:switch_controller/widgets/double_line_border_container.dart';
 
 class HomePage extends HookConsumerWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.stfulNavigationShell});
+
+  final StatefulNavigationShell stfulNavigationShell;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedIndex = useState(0);
     final colorScheme = Theme.of(context).colorScheme;
 
     final size = MediaQuery.sizeOf(context);
 
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: colorScheme.primaryContainer.withValues(alpha: 0.8),
-        destinations: [
-          NavigationDestination(icon: Icon(Icons.code), label: 'コード'),
-          NavigationDestination(icon: Icon(Icons.tv), label: 'リモコン'),
-        ],
-        selectedIndex: selectedIndex.value,
-        onDestinationSelected: (value) {
-          selectedIndex.value = value;
-        },
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.only(top: 4),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border(
+            top: BorderSide(
+              color: colorScheme.primary.withValues(alpha: 0.8),
+              width: 2,
+            ),
+          ),
+        ),
+        child: NavigationBar(
+          backgroundColor: colorScheme.primaryContainer.withValues(alpha: 0.8),
+          destinations: [
+            NavigationDestination(icon: Icon(Icons.code), label: 'コード'),
+            NavigationDestination(icon: Icon(Icons.tv), label: 'リモコン'),
+          ],
+          selectedIndex: stfulNavigationShell.currentIndex,
+          onDestinationSelected: (value) => stfulNavigationShell.goBranch(
+            value,
+            initialLocation: value == stfulNavigationShell.currentIndex,
+          ),
+        ),
       ),
       body: CustomBackground(
         backGroundWidget: CustomRiveAnimation(
@@ -47,14 +56,7 @@ class HomePage extends HookConsumerWidget {
           fit: .fitWidth,
           artBoardName: "downLight-phone",
         ),
-        foragroundWidget: EasyAnimatedIndexedStack(
-          index: selectedIndex.value,
-          animationBuilder: (context, animation, child) =>
-              FadeTransition(opacity: animation, child: child),
-          curve: Curves.easeInOutSine,
-          duration: Duration(milliseconds: 240),
-          children: [SendCodePage(), RemoconPage()],
-        ),
+        foragroundWidget: stfulNavigationShell,
       ),
     );
   }

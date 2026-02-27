@@ -15,37 +15,40 @@ class SendCodePage extends HookConsumerWidget {
     final size = MediaQuery.sizeOf(context);
     final codeStream = ref.watch(firebaseCodesStreamProvider);
 
-    return Center(
-      child: codeStream.when(
-        data: (codes) {
-          return SingleChildScrollView(
-            child: Column(
-              mainAxisSize: .min,
-              spacing: 16,
-              children: [
-                // SizedBox(height: 48 - 16),
-                // GlassContainer.clearGlass(
-                //   height: size.height * 0.3,
-                //   borderRadius: BorderRadius.circular(8),
-                //   borderColor: Colors.white24,
-                //   borderWidth: 1.5,
-                //   child: Center(
-                //     child: Text(
-                //       "コード一覧",
-                //       style: Theme.of(context).textTheme.displayLarge,
-                //     ),
-                //   ),
-                // ),
-                AppBar(title: Text("Code")),
-                ...List.generate(codes.length, (index) {
-                  return CodeContainer(code: codes[index]);
-                }),
-              ],
-            ),
-          );
-        },
-        loading: () => const CircularProgressIndicator(),
-        error: (error, stackTrace) => Text('Error: $error'),
+    return Scaffold(
+      appBar: AppBar(title: Text("Code")),
+      body: Center(
+        child: codeStream.when(
+          data: (codes) {
+            return SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: .start,
+                mainAxisSize: .min,
+                spacing: 16,
+                children: [
+                  // SizedBox(height: 48 - 16),
+                  // GlassContainer.clearGlass(
+                  //   height: size.height * 0.3,
+                  //   borderRadius: BorderRadius.circular(8),
+                  //   borderColor: Colors.white24,
+                  //   borderWidth: 1.5,
+                  //   child: Center(
+                  //     child: Text(
+                  //       "コード一覧",
+                  //       style: Theme.of(context).textTheme.displayLarge,
+                  //     ),
+                  //   ),
+                  // ),
+                  ...List.generate(codes.length, (index) {
+                    return CodeContainer(code: codes[index]);
+                  }),
+                ],
+              ),
+            );
+          },
+          loading: () => const CircularProgressIndicator(),
+          error: (error, stackTrace) => Text('Error: $error'),
+        ),
       ),
     );
   }

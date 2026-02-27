@@ -10,6 +10,7 @@ import 'package:rive/rive.dart';
 
 // Project imports:
 import 'package:switch_controller/firebase_options.dart';
+import 'package:switch_controller/infrastructure/providers/route_provider.dart';
 import 'package:switch_controller/pages/home_page/home_page.dart';
 import 'package:switch_controller/theme/custom_theme.dart';
 
@@ -18,46 +19,20 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await RiveNative.init();
 
-  runApp(ProviderScope(child: Application()));
+  runApp(const ProviderScope(child: SwitchControllerApp()));
 }
 
-class Application extends StatelessWidget {
-  const Application({super.key});
-
+class SwitchControllerApp extends HookConsumerWidget {
+  const SwitchControllerApp({super.key});
   @override
-  Widget build(BuildContext context) {
-    /// Try changing this and hot reloading the application.
-    ///
-    /// To create a custom theme:
-    /// ```shell
-    /// dart forui theme create [theme template].
-    /// ```
-    // final theme = FThemes.zinc.light;
-
-    // return MaterialApp(
-    //   // supportedLocales: FLocalizations.supportedLocales,
-    //   // localizationsDelegates: const [...FLocalizations.localizationsDelegates],
-    //   // MaterialApp's theme is also animated by default with the same duration and curve.
-    //   // See https://api.flutter.dev/flutter/material/MaterialApp/themeAnimationStyle.html for how to configure this.
-    //   //
-    //   // There is a known issue with implicitly animated widgets where their transition occurs AFTER the theme's.
-    //   theme: theme.toApproximateMaterialTheme(),
-    //   // theme: CustomTheme().mainLightTheme,
-    //   builder: (_, child) => FAnimatedTheme(
-    //     data: theme,
-    //     child: FToaster(child: child!),
-    //   ),
-    //   // You can also replace FScaffold with Material Scaffold.
-    //   home: HomePage(),
-    // );
-
+  Widget build(BuildContext context, WidgetRef ref) {
     final cTheme = CustomTheme();
 
-    return MaterialApp(
+    return MaterialApp.router(
+      themeMode: ThemeMode.system,
       theme: cTheme.mainLightTheme,
       darkTheme: cTheme.mainDarkTheme,
-      themeMode: ThemeMode.system,
-      home: HomePage(),
+      routerConfig: ref.watch(routeProvider),
     );
   }
 }
