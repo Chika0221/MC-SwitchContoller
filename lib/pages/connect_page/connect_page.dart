@@ -26,6 +26,7 @@ class ConnectPage extends HookConsumerWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         title: Text('接続'),
         centerTitle: true,

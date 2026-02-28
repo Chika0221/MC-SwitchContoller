@@ -15,6 +15,7 @@ class CustomColorSchema {
     onError: Color(0xffffffff),
     surface: Color(0xffb3babb),
     surfaceContainer: Color(0xff373c52),
+    surfaceContainerHigh: Color.fromARGB(255, 66, 70, 92),
     onSurface: Color(0xff373c52),
   );
 

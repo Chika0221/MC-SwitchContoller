@@ -8,9 +8,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:switch_controller/widgets/connect_state_container.dart';
 
 class CustomAppBar extends HookConsumerWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, required this.title, this.backgroundColor});
 
   final Widget title;
+  final Color? backgroundColor;
 
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
@@ -18,8 +19,9 @@ class CustomAppBar extends HookConsumerWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AppBar(
-      title: Text("Switch Controller"),
+      title: title,
       centerTitle: true,
+      backgroundColor: backgroundColor,
       actions: [ConnectStateContainer(), const SizedBox(width: 16)],
     );
   }

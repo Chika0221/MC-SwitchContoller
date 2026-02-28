@@ -17,7 +17,7 @@ class CustomTheme {
     fontFamily: Fonts.WDXLLubrifont.name,
   );
 
-  ThemeData titleTheme(BuildContext context) => ThemeData(
+  static ThemeData titleTheme(BuildContext context) => ThemeData(
     useMaterial3: true,
     colorScheme: Theme.of(context).brightness == Brightness.dark
         ? CustomColorSchema().zawaDarkSchema

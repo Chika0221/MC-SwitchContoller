@@ -9,6 +9,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:switch_controller/infrastructure/providers/connect_provider.dart';
 import 'package:switch_controller/infrastructure/providers/route_provider.dart';
 import 'package:switch_controller/main.dart';
+import 'package:switch_controller/pages/dock_page/widgets/dock_item_container.dart';
+import 'package:switch_controller/pages/dock_page/widgets/two_style_clocks.dart';
+import 'package:switch_controller/widgets/custom_app_bar.dart';
+
+part 'widgets/dock_info_zone.dart';
 
 class DockPage extends HookConsumerWidget {
   const DockPage({super.key});
@@ -27,13 +32,15 @@ class DockPage extends HookConsumerWidget {
 
       child: Scaffold(
         backgroundColor: colorScheme.surfaceContainer,
-        body: Center(
-          child: OutlinedButton(
-            onPressed: () {
-              context.go(RoutePath.sendCode.path);
-            },
-            child: Text("ドックモード"),
-          ),
+        body: Column(
+          mainAxisSize: .max,
+          children: [
+            Flexible(flex: 2, child: DockInfoZone()),
+            Flexible(flex: 3, child: Container(color: Colors.green)),
+            // const Spacer(),
+            // Image.asset('assets/images/dock.png', width: 200, height: 200),
+            // const Spacer(),
+          ],
         ),
       ),
     );
