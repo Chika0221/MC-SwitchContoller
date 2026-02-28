@@ -11,7 +11,6 @@ import 'package:switch_controller/infrastructure/providers/route_provider.dart';
 import 'package:switch_controller/main.dart';
 import 'package:switch_controller/pages/dock_page/widgets/dock_item_container.dart';
 import 'package:switch_controller/pages/dock_page/widgets/two_style_clocks.dart';
-import 'package:switch_controller/widgets/custom_app_bar.dart';
 
 part 'widgets/dock_info_zone.dart';
 
