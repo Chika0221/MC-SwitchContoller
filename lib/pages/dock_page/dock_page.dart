@@ -11,6 +11,7 @@ import 'package:switch_controller/infrastructure/providers/route_provider.dart';
 import 'package:switch_controller/main.dart';
 import 'package:switch_controller/pages/dock_page/widgets/dock_item_container.dart';
 import 'package:switch_controller/pages/dock_page/widgets/two_style_clocks.dart';
+import 'package:switch_controller/widgets/connect_state_container.dart';
 
 part 'widgets/dock_info_zone.dart';
 
@@ -31,15 +32,19 @@ class DockPage extends HookConsumerWidget {
 
       child: Scaffold(
         backgroundColor: colorScheme.surfaceContainer,
-        body: Column(
-          mainAxisSize: .max,
-          children: [
-            Flexible(flex: 2, child: DockInfoZone()),
-            Flexible(flex: 3, child: Container(color: Colors.green)),
-            // const Spacer(),
-            // Image.asset('assets/images/dock.png', width: 200, height: 200),
-            // const Spacer(),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: .max,
+            children: [
+              Flexible(flex: 2, child: DockInfoZone()),
+              const SizedBox(height: 16),
+              Flexible(
+                flex: 3,
+                child: DockItemContainer(child: SizedBox.expand()),
+              ),
+            ],
+          ),
         ),
       ),
     );

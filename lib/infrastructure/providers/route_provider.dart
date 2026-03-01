@@ -27,6 +27,8 @@ final routeProvider = Provider((ref) {
             DeviceOrientation.portraitDown,
           ]);
 
+          SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
           return HomePage(stfulNavigationShell: navigationShell);
         },
         branches: [
@@ -52,6 +54,8 @@ final routeProvider = Provider((ref) {
       GoRoute(
         path: RoutePath.dock.path,
         builder: (context, state) {
+          SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+
           SystemChrome.setPreferredOrientations([
             DeviceOrientation.landscapeLeft,
             DeviceOrientation.landscapeRight,

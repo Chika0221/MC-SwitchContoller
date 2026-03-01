@@ -39,6 +39,7 @@ class SwitchControllerApp extends HookConsumerWidget {
       themeMode: ThemeMode.system,
       theme: cTheme.mainLightTheme,
       darkTheme: cTheme.mainDarkTheme,
+      debugShowCheckedModeBanner: false,
       routerConfig: ref.watch(routeProvider),
     );
   }
