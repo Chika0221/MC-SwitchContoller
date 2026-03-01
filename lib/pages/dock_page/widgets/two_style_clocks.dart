@@ -13,10 +13,11 @@ class TwoStyleClocks extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
+    final now = TimeOfDay.now();
 
     return Center(
       child: Text(
-        "${TimeOfDay.now().hour}:${TimeOfDay.now().minute}",
+        "${now.hour}:${now.minute}",
         // style: textTheme.headlineLarge?.copyWith(
         //   color: colorScheme.primary,
         //   fontSize: 80,

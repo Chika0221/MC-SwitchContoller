@@ -15,37 +15,30 @@ class CodeContainer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // return FCard(
-    //   title: Text(code.name),
-    //   subtitle: Text(code.code, maxLines: 2, overflow: .ellipsis),
-    //   child: SizedBox(
-    //     height: 48,
-    //     child: (!(code.state))
-    //         ? FButton(
-    //             onPress: () async {
-    //               final updateCode = code.copyWith(state: true);
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
-    //               ref
-    //                   .read(firebaseCodesStreamProvider.notifier)
-    //                   .updateCodes(updateCode);
-    //               showFToast(
-    //                 context: context,
-    //                 title: Text("コードを送信しました"),
-    //                 duration: Duration(seconds: 2),
-    //               );
-    //             },
-    //             suffix: Icon(FIcons.send),
-    //             child: const Text('Send'),
-    //           )
-    //         : Center(child: const FProgress()),
-    //   ),
-    // );
-    return Card(
+    final borderColor = Color.lerp(
+      colorScheme.surface,
+      colorScheme.surfaceContainer,
+      0.2,
+    );
+
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: borderColor ?? Colors.red, width: 2),
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: ListTile(
-        title: Text(code.name),
-        subtitle: Text(code.code, maxLines: 2, overflow: TextOverflow.ellipsis),
+        title: Text(code.name, style: textTheme.titleLarge),
+        subtitle: Text(
+          code.code,
+          style: textTheme.bodyLarge,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
         trailing: (!(code.state))
-            ? ElevatedButton(
+            ? FilledButton.icon(
                 onPressed: () async {
                   final updateCode = code.copyWith(state: true);
 
@@ -56,7 +49,8 @@ class CodeContainer extends HookConsumerWidget {
                     context,
                   ).showSnackBar(SnackBar(content: Text("コードを送信しました")));
                 },
-                child: const Text('Send'),
+                icon: const Icon(Icons.play_arrow_rounded),
+                label: const Text('Send'),
               )
             : const CircularProgressIndicator(),
       ),

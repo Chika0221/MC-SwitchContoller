@@ -57,9 +57,23 @@ class ConnectPage extends HookConsumerWidget {
 
             if (filterdList.isEmpty) {
               return Center(
-                child: Text(
-                  '接続可能なデバイスが見つかりませんでした',
-                  style: TextStyle(color: colorScheme.primary),
+                child: Column(
+                  mainAxisAlignment: .center,
+                  children: [
+                    Text(
+                      '接続可能なデバイスが見つかりませんでした',
+                      style: Theme.of(context).textTheme.headlineSmall
+                          ?.copyWith(color: colorScheme.primary),
+                    ),
+                    const SizedBox(height: 16),
+                    FilledButton.icon(
+                      onPressed: () async => await ref
+                          .read(connectableProvider.notifier)
+                          .refresh(),
+                      label: Text('再読み込み'),
+                      icon: Icon(Icons.refresh),
+                    ),
+                  ],
                 ),
               );
             }

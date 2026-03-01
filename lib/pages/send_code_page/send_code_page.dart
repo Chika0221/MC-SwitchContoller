@@ -17,20 +17,17 @@ class SendCodePage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: CustomAppBar(title: Text("Code")),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: codeStream.when(
           data: (codes) {
-            return SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: .start,
-                mainAxisSize: .min,
-                spacing: 16,
-                children: [
-                  ...List.generate(codes.length, (index) {
-                    return CodeContainer(code: codes[index]);
-                  }),
-                ],
-              ),
+            return ListView.separated(
+              itemCount: codes.length,
+              separatorBuilder: (context, index) => const SizedBox(height: 8),
+              itemBuilder: (context, index) {
+                final code = codes[index];
+                return CodeContainer(code: code);
+              },
             );
           },
           loading: () => const CircularProgressIndicator(),
