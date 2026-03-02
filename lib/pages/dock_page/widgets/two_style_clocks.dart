@@ -23,6 +23,29 @@ class TwoStyleClocks extends HookConsumerWidget {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
 
+    return CarouselView.weighted(
+      backgroundColor: Colors.transparent,
+      flexWeights: [1],
+      children: [
+        Center(
+          child: Text(
+            optimizeTimeStyle(TimeOfDay.now()),
+            style: textTheme.headlineLarge?.copyWith(
+              color: colorScheme.primary,
+              fontSize: 80,
+            ),
+          ),
+        ),
+        Center(
+          child: Text(
+            optimizeTimeStyle(TimeOfDay.now()),
+            style: CustomTheme.titleTheme(context).textTheme.headlineLarge
+                ?.copyWith(color: colorScheme.primary, fontSize: 40),
+          ),
+        ),
+      ],
+    );
+
     return Center(
       child: Text(
         optimizeTimeStyle(TimeOfDay.now()),
