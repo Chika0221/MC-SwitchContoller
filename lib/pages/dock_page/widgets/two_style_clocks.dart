@@ -45,17 +45,5 @@ class TwoStyleClocks extends HookConsumerWidget {
         ),
       ],
     );
-
-    return Center(
-      child: Text(
-        optimizeTimeStyle(TimeOfDay.now()),
-        style: textTheme.headlineLarge?.copyWith(
-          color: colorScheme.primary,
-          fontSize: 80,
-        ),
-        // style: CustomTheme.titleTheme(context).textTheme.headlineLarge
-        //     ?.copyWith(color: colorScheme.primary, fontSize: 40),
-      ),
-    );
   }
 }
