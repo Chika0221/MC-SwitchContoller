@@ -66,21 +66,18 @@ class _$UnregisteredCodeCopyWithImpl<$Res, $Val extends UnregisteredCode>
   }) {
     return _then(
       _value.copyWith(
-            name:
-                null == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String,
-            state:
-                freezed == state
-                    ? _value.state
-                    : state // ignore: cast_nullable_to_non_nullable
-                        as CodeRegisteredState?,
-            error:
-                freezed == error
-                    ? _value.error
-                    : error // ignore: cast_nullable_to_non_nullable
-                        as String?,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            state: freezed == state
+                ? _value.state
+                : state // ignore: cast_nullable_to_non_nullable
+                      as CodeRegisteredState?,
+            error: freezed == error
+                ? _value.error
+                : error // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -119,21 +116,18 @@ class __$$UnregisteredCodeImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$UnregisteredCodeImpl(
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-        state:
-            freezed == state
-                ? _value.state
-                : state // ignore: cast_nullable_to_non_nullable
-                    as CodeRegisteredState?,
-        error:
-            freezed == error
-                ? _value.error
-                : error // ignore: cast_nullable_to_non_nullable
-                    as String?,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        state: freezed == state
+            ? _value.state
+            : state // ignore: cast_nullable_to_non_nullable
+                  as CodeRegisteredState?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
