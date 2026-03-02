@@ -12,6 +12,9 @@ _$ConnectImpl _$$ConnectImplFromJson(Map<String, dynamic> json) =>
       controllerID: json['controllerID'] as String?,
       hostName: json['hostName'] as String?,
       controllerName: json['controllerName'] as String?,
+      infoAction: InfoAction.fromJson(
+        json['infoAction'] as Map<String, dynamic>,
+      ),
       state:
           $enumDecodeNullable(_$ConnectStateEnumMap, json['state']) ??
           ConnectState.ready,
@@ -33,6 +36,7 @@ Map<String, dynamic> _$$ConnectImplToJson(_$ConnectImpl instance) =>
       'controllerID': instance.controllerID,
       'hostName': instance.hostName,
       'controllerName': instance.controllerName,
+      'infoAction': instance.infoAction,
       'state': _$ConnectStateEnumMap[instance.state]!,
       'macroQueue': instance.macroQueue,
       'workflowQueue': instance.workflowQueue,

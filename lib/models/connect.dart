@@ -15,6 +15,7 @@ class Connect with _$Connect {
     required String? controllerID,
     required String? hostName,
     required String? controllerName,
+    required InfoAction infoAction,
     @Default(ConnectState.ready) ConnectState state,
     @Default(<Macro>[]) List<Macro> macroQueue,
     @Default(<Workflow>[]) List<Workflow> workflowQueue,

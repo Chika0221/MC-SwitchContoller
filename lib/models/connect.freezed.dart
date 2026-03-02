@@ -25,6 +25,7 @@ mixin _$Connect {
   String? get controllerID => throw _privateConstructorUsedError;
   String? get hostName => throw _privateConstructorUsedError;
   String? get controllerName => throw _privateConstructorUsedError;
+  InfoAction get infoAction => throw _privateConstructorUsedError;
   ConnectState get state => throw _privateConstructorUsedError;
   List<Macro> get macroQueue => throw _privateConstructorUsedError;
   List<Workflow> get workflowQueue => throw _privateConstructorUsedError;
@@ -48,10 +49,13 @@ abstract class $ConnectCopyWith<$Res> {
     String? controllerID,
     String? hostName,
     String? controllerName,
+    InfoAction infoAction,
     ConnectState state,
     List<Macro> macroQueue,
     List<Workflow> workflowQueue,
   });
+
+  $InfoActionCopyWith<$Res> get infoAction;
 }
 
 /// @nodoc
@@ -73,6 +77,7 @@ class _$ConnectCopyWithImpl<$Res, $Val extends Connect>
     Object? controllerID = freezed,
     Object? hostName = freezed,
     Object? controllerName = freezed,
+    Object? infoAction = null,
     Object? state = null,
     Object? macroQueue = null,
     Object? workflowQueue = null,
@@ -95,6 +100,10 @@ class _$ConnectCopyWithImpl<$Res, $Val extends Connect>
                 ? _value.controllerName
                 : controllerName // ignore: cast_nullable_to_non_nullable
                       as String?,
+            infoAction: null == infoAction
+                ? _value.infoAction
+                : infoAction // ignore: cast_nullable_to_non_nullable
+                      as InfoAction,
             state: null == state
                 ? _value.state
                 : state // ignore: cast_nullable_to_non_nullable
@@ -111,6 +120,16 @@ class _$ConnectCopyWithImpl<$Res, $Val extends Connect>
           as $Val,
     );
   }
+
+  /// Create a copy of Connect
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $InfoActionCopyWith<$Res> get infoAction {
+    return $InfoActionCopyWith<$Res>(_value.infoAction, (value) {
+      return _then(_value.copyWith(infoAction: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -126,10 +145,14 @@ abstract class _$$ConnectImplCopyWith<$Res> implements $ConnectCopyWith<$Res> {
     String? controllerID,
     String? hostName,
     String? controllerName,
+    InfoAction infoAction,
     ConnectState state,
     List<Macro> macroQueue,
     List<Workflow> workflowQueue,
   });
+
+  @override
+  $InfoActionCopyWith<$Res> get infoAction;
 }
 
 /// @nodoc
@@ -150,6 +173,7 @@ class __$$ConnectImplCopyWithImpl<$Res>
     Object? controllerID = freezed,
     Object? hostName = freezed,
     Object? controllerName = freezed,
+    Object? infoAction = null,
     Object? state = null,
     Object? macroQueue = null,
     Object? workflowQueue = null,
@@ -172,6 +196,10 @@ class __$$ConnectImplCopyWithImpl<$Res>
             ? _value.controllerName
             : controllerName // ignore: cast_nullable_to_non_nullable
                   as String?,
+        infoAction: null == infoAction
+            ? _value.infoAction
+            : infoAction // ignore: cast_nullable_to_non_nullable
+                  as InfoAction,
         state: null == state
             ? _value.state
             : state // ignore: cast_nullable_to_non_nullable
@@ -197,6 +225,7 @@ class _$ConnectImpl implements _Connect {
     required this.controllerID,
     required this.hostName,
     required this.controllerName,
+    required this.infoAction,
     this.state = ConnectState.ready,
     final List<Macro> macroQueue = const <Macro>[],
     final List<Workflow> workflowQueue = const <Workflow>[],
@@ -214,6 +243,8 @@ class _$ConnectImpl implements _Connect {
   final String? hostName;
   @override
   final String? controllerName;
+  @override
+  final InfoAction infoAction;
   @override
   @JsonKey()
   final ConnectState state;
@@ -237,7 +268,7 @@ class _$ConnectImpl implements _Connect {
 
   @override
   String toString() {
-    return 'Connect(hostID: $hostID, controllerID: $controllerID, hostName: $hostName, controllerName: $controllerName, state: $state, macroQueue: $macroQueue, workflowQueue: $workflowQueue)';
+    return 'Connect(hostID: $hostID, controllerID: $controllerID, hostName: $hostName, controllerName: $controllerName, infoAction: $infoAction, state: $state, macroQueue: $macroQueue, workflowQueue: $workflowQueue)';
   }
 
   @override
@@ -252,6 +283,8 @@ class _$ConnectImpl implements _Connect {
                 other.hostName == hostName) &&
             (identical(other.controllerName, controllerName) ||
                 other.controllerName == controllerName) &&
+            (identical(other.infoAction, infoAction) ||
+                other.infoAction == infoAction) &&
             (identical(other.state, state) || other.state == state) &&
             const DeepCollectionEquality().equals(
               other._macroQueue,
@@ -271,6 +304,7 @@ class _$ConnectImpl implements _Connect {
     controllerID,
     hostName,
     controllerName,
+    infoAction,
     state,
     const DeepCollectionEquality().hash(_macroQueue),
     const DeepCollectionEquality().hash(_workflowQueue),
@@ -296,6 +330,7 @@ abstract class _Connect implements Connect {
     required final String? controllerID,
     required final String? hostName,
     required final String? controllerName,
+    required final InfoAction infoAction,
     final ConnectState state,
     final List<Macro> macroQueue,
     final List<Workflow> workflowQueue,
@@ -311,6 +346,8 @@ abstract class _Connect implements Connect {
   String? get hostName;
   @override
   String? get controllerName;
+  @override
+  InfoAction get infoAction;
   @override
   ConnectState get state;
   @override
