@@ -15,7 +15,7 @@ class DockInfoZone extends HookConsumerWidget {
               Row(
                 mainAxisAlignment: .end,
                 children: [
-                  Expanded(child: DockItemContainer(child: SizedBox.expand())),
+                  // Expanded(child: DockItemContainer(child: SizedBox.expand())),
                   const SizedBox(width: 4),
                   ConnectStateContainer(),
                   const SizedBox(width: 4),

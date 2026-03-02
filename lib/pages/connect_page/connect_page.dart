@@ -47,8 +47,14 @@ class ConnectPage extends HookConsumerWidget {
           await ref.read(connectableProvider.notifier).refresh();
         },
         child: connectableList.when(
-          error: (error, stackTrace) =>
-              Center(child: Text('エラーが発生しました: $error')),
+          error: (error, stackTrace) => Center(
+            child: Text(
+              'エラーが発生しました: $error',
+              style: Theme.of(
+                context,
+              ).textTheme.headlineSmall?.copyWith(color: colorScheme.primary),
+            ),
+          ),
           loading: () => const Center(child: CircularProgressIndicator()),
           data: (data) {
             final filterdList = data
