@@ -15,8 +15,10 @@ class DockInfoZone extends HookConsumerWidget {
               Row(
                 mainAxisAlignment: .end,
                 children: [
+                  Expanded(child: DockItemContainer(child: SizedBox.expand())),
+                  const SizedBox(width: 4),
                   ConnectStateContainer(),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 4),
                   IconButton.filled(
                     onPressed: () => context.go(RoutePath.sendCode.path),
                     icon: Icon(Icons.exit_to_app_rounded),
