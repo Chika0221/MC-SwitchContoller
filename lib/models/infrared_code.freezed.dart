@@ -62,21 +62,18 @@ class _$InfraredCodeCopyWithImpl<$Res, $Val extends InfraredCode>
   $Res call({Object? name = null, Object? state = null, Object? code = null}) {
     return _then(
       _value.copyWith(
-            name:
-                null == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String,
-            state:
-                null == state
-                    ? _value.state
-                    : state // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            code:
-                null == code
-                    ? _value.code
-                    : code // ignore: cast_nullable_to_non_nullable
-                        as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            state: null == state
+                ? _value.state
+                : state // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            code: null == code
+                ? _value.code
+                : code // ignore: cast_nullable_to_non_nullable
+                      as String,
           )
           as $Val,
     );
@@ -111,21 +108,18 @@ class __$$InfraredCodeImplCopyWithImpl<$Res>
   $Res call({Object? name = null, Object? state = null, Object? code = null}) {
     return _then(
       _$InfraredCodeImpl(
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-        state:
-            null == state
-                ? _value.state
-                : state // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        code:
-            null == code
-                ? _value.code
-                : code // ignore: cast_nullable_to_non_nullable
-                    as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        state: null == state
+            ? _value.state
+            : state // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        code: null == code
+            ? _value.code
+            : code // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }
