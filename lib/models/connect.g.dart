@@ -36,10 +36,10 @@ Map<String, dynamic> _$$ConnectImplToJson(_$ConnectImpl instance) =>
       'controllerID': instance.controllerID,
       'hostName': instance.hostName,
       'controllerName': instance.controllerName,
-      'infoAction': instance.infoAction,
+      'infoAction': instance.infoAction.toJson(),
       'state': _$ConnectStateEnumMap[instance.state]!,
-      'macroQueue': instance.macroQueue,
-      'workflowQueue': instance.workflowQueue,
+      'macroQueue': instance.macroQueue.map((e) => e.toJson()).toList(),
+      'workflowQueue': instance.workflowQueue.map((e) => e.toJson()).toList(),
     };
 
 const _$ConnectStateEnumMap = {
@@ -48,52 +48,54 @@ const _$ConnectStateEnumMap = {
   ConnectState.offline: 'offline',
 };
 
-_$ButtonsImpl _$$ButtonsImplFromJson(Map<String, dynamic> json) =>
-    _$ButtonsImpl(
-      labels: (json['labels'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
-      macros: (json['macros'] as List<dynamic>)
-          .map((e) => Macro.fromJson(e as Map<String, dynamic>))
-          .toList(),
+_$ButtonsTypeImpl _$$ButtonsTypeImplFromJson(Map<String, dynamic> json) =>
+    _$ButtonsTypeImpl(
+      labels:
+          (json['labels'] as List<dynamic>).map((e) => e as String).toList(),
+      macros:
+          (json['macros'] as List<dynamic>)
+              .map((e) => Macro.fromJson(e as Map<String, dynamic>))
+              .toList(),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$ButtonsImplToJson(_$ButtonsImpl instance) =>
+Map<String, dynamic> _$$ButtonsTypeImplToJson(_$ButtonsTypeImpl instance) =>
     <String, dynamic>{
       'labels': instance.labels,
-      'macros': instance.macros,
+      'macros': instance.macros.map((e) => e.toJson()).toList(),
       'runtimeType': instance.$type,
     };
 
-_$TextImpl _$$TextImplFromJson(Map<String, dynamic> json) => _$TextImpl(
-  text: json['text'] as String,
-  macro: Macro.fromJson(json['macro'] as Map<String, dynamic>),
-  $type: json['runtimeType'] as String?,
-);
+_$TextTypeImpl _$$TextTypeImplFromJson(Map<String, dynamic> json) =>
+    _$TextTypeImpl(
+      text: json['text'] as String,
+      macro: Macro.fromJson(json['macro'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
 
-Map<String, dynamic> _$$TextImplToJson(_$TextImpl instance) =>
+Map<String, dynamic> _$$TextTypeImplToJson(_$TextTypeImpl instance) =>
     <String, dynamic>{
       'text': instance.text,
-      'macro': instance.macro,
+      'macro': instance.macro.toJson(),
       'runtimeType': instance.$type,
     };
 
-_$SliderImpl _$$SliderImplFromJson(Map<String, dynamic> json) => _$SliderImpl(
-  label: json['label'] as String,
-  min: (json['min'] as num).toDouble(),
-  max: (json['max'] as num).toDouble(),
-  value: (json['value'] as num).toDouble(),
-  macro: Macro.fromJson(json['macro'] as Map<String, dynamic>),
-  $type: json['runtimeType'] as String?,
-);
+_$SliderTypeImpl _$$SliderTypeImplFromJson(Map<String, dynamic> json) =>
+    _$SliderTypeImpl(
+      label: json['label'] as String,
+      min: (json['min'] as num).toDouble(),
+      max: (json['max'] as num).toDouble(),
+      value: (json['value'] as num).toDouble(),
+      macro: Macro.fromJson(json['macro'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
 
-Map<String, dynamic> _$$SliderImplToJson(_$SliderImpl instance) =>
+Map<String, dynamic> _$$SliderTypeImplToJson(_$SliderTypeImpl instance) =>
     <String, dynamic>{
       'label': instance.label,
       'min': instance.min,
       'max': instance.max,
       'value': instance.value,
-      'macro': instance.macro,
+      'macro': instance.macro.toJson(),
       'runtimeType': instance.$type,
     };

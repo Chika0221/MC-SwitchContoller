@@ -84,38 +84,46 @@ class _$ConnectCopyWithImpl<$Res, $Val extends Connect>
   }) {
     return _then(
       _value.copyWith(
-            hostID: freezed == hostID
-                ? _value.hostID
-                : hostID // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            controllerID: freezed == controllerID
-                ? _value.controllerID
-                : controllerID // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            hostName: freezed == hostName
-                ? _value.hostName
-                : hostName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            controllerName: freezed == controllerName
-                ? _value.controllerName
-                : controllerName // ignore: cast_nullable_to_non_nullable
-                      as String?,
-            infoAction: null == infoAction
-                ? _value.infoAction
-                : infoAction // ignore: cast_nullable_to_non_nullable
-                      as InfoAction,
-            state: null == state
-                ? _value.state
-                : state // ignore: cast_nullable_to_non_nullable
-                      as ConnectState,
-            macroQueue: null == macroQueue
-                ? _value.macroQueue
-                : macroQueue // ignore: cast_nullable_to_non_nullable
-                      as List<Macro>,
-            workflowQueue: null == workflowQueue
-                ? _value.workflowQueue
-                : workflowQueue // ignore: cast_nullable_to_non_nullable
-                      as List<Workflow>,
+            hostID:
+                freezed == hostID
+                    ? _value.hostID
+                    : hostID // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            controllerID:
+                freezed == controllerID
+                    ? _value.controllerID
+                    : controllerID // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            hostName:
+                freezed == hostName
+                    ? _value.hostName
+                    : hostName // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            controllerName:
+                freezed == controllerName
+                    ? _value.controllerName
+                    : controllerName // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            infoAction:
+                null == infoAction
+                    ? _value.infoAction
+                    : infoAction // ignore: cast_nullable_to_non_nullable
+                        as InfoAction,
+            state:
+                null == state
+                    ? _value.state
+                    : state // ignore: cast_nullable_to_non_nullable
+                        as ConnectState,
+            macroQueue:
+                null == macroQueue
+                    ? _value.macroQueue
+                    : macroQueue // ignore: cast_nullable_to_non_nullable
+                        as List<Macro>,
+            workflowQueue:
+                null == workflowQueue
+                    ? _value.workflowQueue
+                    : workflowQueue // ignore: cast_nullable_to_non_nullable
+                        as List<Workflow>,
           )
           as $Val,
     );
@@ -180,45 +188,54 @@ class __$$ConnectImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$ConnectImpl(
-        hostID: freezed == hostID
-            ? _value.hostID
-            : hostID // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        controllerID: freezed == controllerID
-            ? _value.controllerID
-            : controllerID // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        hostName: freezed == hostName
-            ? _value.hostName
-            : hostName // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        controllerName: freezed == controllerName
-            ? _value.controllerName
-            : controllerName // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        infoAction: null == infoAction
-            ? _value.infoAction
-            : infoAction // ignore: cast_nullable_to_non_nullable
-                  as InfoAction,
-        state: null == state
-            ? _value.state
-            : state // ignore: cast_nullable_to_non_nullable
-                  as ConnectState,
-        macroQueue: null == macroQueue
-            ? _value._macroQueue
-            : macroQueue // ignore: cast_nullable_to_non_nullable
-                  as List<Macro>,
-        workflowQueue: null == workflowQueue
-            ? _value._workflowQueue
-            : workflowQueue // ignore: cast_nullable_to_non_nullable
-                  as List<Workflow>,
+        hostID:
+            freezed == hostID
+                ? _value.hostID
+                : hostID // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        controllerID:
+            freezed == controllerID
+                ? _value.controllerID
+                : controllerID // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        hostName:
+            freezed == hostName
+                ? _value.hostName
+                : hostName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        controllerName:
+            freezed == controllerName
+                ? _value.controllerName
+                : controllerName // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        infoAction:
+            null == infoAction
+                ? _value.infoAction
+                : infoAction // ignore: cast_nullable_to_non_nullable
+                    as InfoAction,
+        state:
+            null == state
+                ? _value.state
+                : state // ignore: cast_nullable_to_non_nullable
+                    as ConnectState,
+        macroQueue:
+            null == macroQueue
+                ? _value._macroQueue
+                : macroQueue // ignore: cast_nullable_to_non_nullable
+                    as List<Macro>,
+        workflowQueue:
+            null == workflowQueue
+                ? _value._workflowQueue
+                : workflowQueue // ignore: cast_nullable_to_non_nullable
+                    as List<Workflow>,
       ),
     );
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$ConnectImpl implements _Connect {
   const _$ConnectImpl({
     required this.hostID,
@@ -366,11 +383,11 @@ abstract class _Connect implements Connect {
 InfoAction _$InfoActionFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'buttons':
-      return Buttons.fromJson(json);
+      return ButtonsType.fromJson(json);
     case 'text':
-      return Text.fromJson(json);
+      return TextType.fromJson(json);
     case 'slider':
-      return Slider.fromJson(json);
+      return SliderType.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -426,21 +443,21 @@ mixin _$InfoAction {
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Buttons value) buttons,
-    required TResult Function(Text value) text,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ButtonsType value) buttons,
+    required TResult Function(TextType value) text,
+    required TResult Function(SliderType value) slider,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Buttons value)? buttons,
-    TResult? Function(Text value)? text,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ButtonsType value)? buttons,
+    TResult? Function(TextType value)? text,
+    TResult? Function(SliderType value)? slider,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Buttons value)? buttons,
-    TResult Function(Text value)? text,
-    TResult Function(Slider value)? slider,
+    TResult Function(ButtonsType value)? buttons,
+    TResult Function(TextType value)? text,
+    TResult Function(SliderType value)? slider,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 
@@ -471,22 +488,22 @@ class _$InfoActionCopyWithImpl<$Res, $Val extends InfoAction>
 }
 
 /// @nodoc
-abstract class _$$ButtonsImplCopyWith<$Res> {
-  factory _$$ButtonsImplCopyWith(
-    _$ButtonsImpl value,
-    $Res Function(_$ButtonsImpl) then,
-  ) = __$$ButtonsImplCopyWithImpl<$Res>;
+abstract class _$$ButtonsTypeImplCopyWith<$Res> {
+  factory _$$ButtonsTypeImplCopyWith(
+    _$ButtonsTypeImpl value,
+    $Res Function(_$ButtonsTypeImpl) then,
+  ) = __$$ButtonsTypeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<String> labels, List<Macro> macros});
 }
 
 /// @nodoc
-class __$$ButtonsImplCopyWithImpl<$Res>
-    extends _$InfoActionCopyWithImpl<$Res, _$ButtonsImpl>
-    implements _$$ButtonsImplCopyWith<$Res> {
-  __$$ButtonsImplCopyWithImpl(
-    _$ButtonsImpl _value,
-    $Res Function(_$ButtonsImpl) _then,
+class __$$ButtonsTypeImplCopyWithImpl<$Res>
+    extends _$InfoActionCopyWithImpl<$Res, _$ButtonsTypeImpl>
+    implements _$$ButtonsTypeImplCopyWith<$Res> {
+  __$$ButtonsTypeImplCopyWithImpl(
+    _$ButtonsTypeImpl _value,
+    $Res Function(_$ButtonsTypeImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of InfoAction
@@ -495,24 +512,27 @@ class __$$ButtonsImplCopyWithImpl<$Res>
   @override
   $Res call({Object? labels = null, Object? macros = null}) {
     return _then(
-      _$ButtonsImpl(
-        labels: null == labels
-            ? _value._labels
-            : labels // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-        macros: null == macros
-            ? _value._macros
-            : macros // ignore: cast_nullable_to_non_nullable
-                  as List<Macro>,
+      _$ButtonsTypeImpl(
+        labels:
+            null == labels
+                ? _value._labels
+                : labels // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        macros:
+            null == macros
+                ? _value._macros
+                : macros // ignore: cast_nullable_to_non_nullable
+                    as List<Macro>,
       ),
     );
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$ButtonsImpl implements Buttons {
-  const _$ButtonsImpl({
+
+@JsonSerializable(explicitToJson: true)
+class _$ButtonsTypeImpl implements ButtonsType {
+  const _$ButtonsTypeImpl({
     required final List<String> labels,
     required final List<Macro> macros,
     final String? $type,
@@ -520,8 +540,8 @@ class _$ButtonsImpl implements Buttons {
        _macros = macros,
        $type = $type ?? 'buttons';
 
-  factory _$ButtonsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ButtonsImplFromJson(json);
+  factory _$ButtonsTypeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ButtonsTypeImplFromJson(json);
 
   final List<String> _labels;
   @override
@@ -551,7 +571,7 @@ class _$ButtonsImpl implements Buttons {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ButtonsImpl &&
+            other is _$ButtonsTypeImpl &&
             const DeepCollectionEquality().equals(other._labels, _labels) &&
             const DeepCollectionEquality().equals(other._macros, _macros));
   }
@@ -569,8 +589,8 @@ class _$ButtonsImpl implements Buttons {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ButtonsImplCopyWith<_$ButtonsImpl> get copyWith =>
-      __$$ButtonsImplCopyWithImpl<_$ButtonsImpl>(this, _$identity);
+  _$$ButtonsTypeImplCopyWith<_$ButtonsTypeImpl> get copyWith =>
+      __$$ButtonsTypeImplCopyWithImpl<_$ButtonsTypeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -630,9 +650,9 @@ class _$ButtonsImpl implements Buttons {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Buttons value) buttons,
-    required TResult Function(Text value) text,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ButtonsType value) buttons,
+    required TResult Function(TextType value) text,
+    required TResult Function(SliderType value) slider,
   }) {
     return buttons(this);
   }
@@ -640,9 +660,9 @@ class _$ButtonsImpl implements Buttons {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Buttons value)? buttons,
-    TResult? Function(Text value)? text,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ButtonsType value)? buttons,
+    TResult? Function(TextType value)? text,
+    TResult? Function(SliderType value)? slider,
   }) {
     return buttons?.call(this);
   }
@@ -650,9 +670,9 @@ class _$ButtonsImpl implements Buttons {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Buttons value)? buttons,
-    TResult Function(Text value)? text,
-    TResult Function(Slider value)? slider,
+    TResult Function(ButtonsType value)? buttons,
+    TResult Function(TextType value)? text,
+    TResult Function(SliderType value)? slider,
     required TResult orElse(),
   }) {
     if (buttons != null) {
@@ -663,17 +683,18 @@ class _$ButtonsImpl implements Buttons {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ButtonsImplToJson(this);
+    return _$$ButtonsTypeImplToJson(this);
   }
 }
 
-abstract class Buttons implements InfoAction {
-  const factory Buttons({
+abstract class ButtonsType implements InfoAction {
+  const factory ButtonsType({
     required final List<String> labels,
     required final List<Macro> macros,
-  }) = _$ButtonsImpl;
+  }) = _$ButtonsTypeImpl;
 
-  factory Buttons.fromJson(Map<String, dynamic> json) = _$ButtonsImpl.fromJson;
+  factory ButtonsType.fromJson(Map<String, dynamic> json) =
+      _$ButtonsTypeImpl.fromJson;
 
   List<String> get labels;
   List<Macro> get macros;
@@ -681,16 +702,16 @@ abstract class Buttons implements InfoAction {
   /// Create a copy of InfoAction
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ButtonsImplCopyWith<_$ButtonsImpl> get copyWith =>
+  _$$ButtonsTypeImplCopyWith<_$ButtonsTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$TextImplCopyWith<$Res> {
-  factory _$$TextImplCopyWith(
-    _$TextImpl value,
-    $Res Function(_$TextImpl) then,
-  ) = __$$TextImplCopyWithImpl<$Res>;
+abstract class _$$TextTypeImplCopyWith<$Res> {
+  factory _$$TextTypeImplCopyWith(
+    _$TextTypeImpl value,
+    $Res Function(_$TextTypeImpl) then,
+  ) = __$$TextTypeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String text, Macro macro});
 
@@ -698,11 +719,13 @@ abstract class _$$TextImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$TextImplCopyWithImpl<$Res>
-    extends _$InfoActionCopyWithImpl<$Res, _$TextImpl>
-    implements _$$TextImplCopyWith<$Res> {
-  __$$TextImplCopyWithImpl(_$TextImpl _value, $Res Function(_$TextImpl) _then)
-    : super(_value, _then);
+class __$$TextTypeImplCopyWithImpl<$Res>
+    extends _$InfoActionCopyWithImpl<$Res, _$TextTypeImpl>
+    implements _$$TextTypeImplCopyWith<$Res> {
+  __$$TextTypeImplCopyWithImpl(
+    _$TextTypeImpl _value,
+    $Res Function(_$TextTypeImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of InfoAction
   /// with the given fields replaced by the non-null parameter values.
@@ -710,15 +733,17 @@ class __$$TextImplCopyWithImpl<$Res>
   @override
   $Res call({Object? text = null, Object? macro = null}) {
     return _then(
-      _$TextImpl(
-        text: null == text
-            ? _value.text
-            : text // ignore: cast_nullable_to_non_nullable
-                  as String,
-        macro: null == macro
-            ? _value.macro
-            : macro // ignore: cast_nullable_to_non_nullable
-                  as Macro,
+      _$TextTypeImpl(
+        text:
+            null == text
+                ? _value.text
+                : text // ignore: cast_nullable_to_non_nullable
+                    as String,
+        macro:
+            null == macro
+                ? _value.macro
+                : macro // ignore: cast_nullable_to_non_nullable
+                    as Macro,
       ),
     );
   }
@@ -735,16 +760,17 @@ class __$$TextImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$TextImpl implements Text {
-  const _$TextImpl({
+
+@JsonSerializable(explicitToJson: true)
+class _$TextTypeImpl implements TextType {
+  const _$TextTypeImpl({
     required this.text,
     required this.macro,
     final String? $type,
   }) : $type = $type ?? 'text';
 
-  factory _$TextImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TextImplFromJson(json);
+  factory _$TextTypeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TextTypeImplFromJson(json);
 
   @override
   final String text;
@@ -763,7 +789,7 @@ class _$TextImpl implements Text {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TextImpl &&
+            other is _$TextTypeImpl &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.macro, macro) || other.macro == macro));
   }
@@ -777,8 +803,8 @@ class _$TextImpl implements Text {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TextImplCopyWith<_$TextImpl> get copyWith =>
-      __$$TextImplCopyWithImpl<_$TextImpl>(this, _$identity);
+  _$$TextTypeImplCopyWith<_$TextTypeImpl> get copyWith =>
+      __$$TextTypeImplCopyWithImpl<_$TextTypeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -838,9 +864,9 @@ class _$TextImpl implements Text {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Buttons value) buttons,
-    required TResult Function(Text value) text,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ButtonsType value) buttons,
+    required TResult Function(TextType value) text,
+    required TResult Function(SliderType value) slider,
   }) {
     return text(this);
   }
@@ -848,9 +874,9 @@ class _$TextImpl implements Text {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Buttons value)? buttons,
-    TResult? Function(Text value)? text,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ButtonsType value)? buttons,
+    TResult? Function(TextType value)? text,
+    TResult? Function(SliderType value)? slider,
   }) {
     return text?.call(this);
   }
@@ -858,9 +884,9 @@ class _$TextImpl implements Text {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Buttons value)? buttons,
-    TResult Function(Text value)? text,
-    TResult Function(Slider value)? slider,
+    TResult Function(ButtonsType value)? buttons,
+    TResult Function(TextType value)? text,
+    TResult Function(SliderType value)? slider,
     required TResult orElse(),
   }) {
     if (text != null) {
@@ -871,15 +897,18 @@ class _$TextImpl implements Text {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TextImplToJson(this);
+    return _$$TextTypeImplToJson(this);
   }
 }
 
-abstract class Text implements InfoAction {
-  const factory Text({required final String text, required final Macro macro}) =
-      _$TextImpl;
+abstract class TextType implements InfoAction {
+  const factory TextType({
+    required final String text,
+    required final Macro macro,
+  }) = _$TextTypeImpl;
 
-  factory Text.fromJson(Map<String, dynamic> json) = _$TextImpl.fromJson;
+  factory TextType.fromJson(Map<String, dynamic> json) =
+      _$TextTypeImpl.fromJson;
 
   String get text;
   Macro get macro;
@@ -887,16 +916,16 @@ abstract class Text implements InfoAction {
   /// Create a copy of InfoAction
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TextImplCopyWith<_$TextImpl> get copyWith =>
+  _$$TextTypeImplCopyWith<_$TextTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SliderImplCopyWith<$Res> {
-  factory _$$SliderImplCopyWith(
-    _$SliderImpl value,
-    $Res Function(_$SliderImpl) then,
-  ) = __$$SliderImplCopyWithImpl<$Res>;
+abstract class _$$SliderTypeImplCopyWith<$Res> {
+  factory _$$SliderTypeImplCopyWith(
+    _$SliderTypeImpl value,
+    $Res Function(_$SliderTypeImpl) then,
+  ) = __$$SliderTypeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String label, double min, double max, double value, Macro macro});
 
@@ -904,12 +933,12 @@ abstract class _$$SliderImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SliderImplCopyWithImpl<$Res>
-    extends _$InfoActionCopyWithImpl<$Res, _$SliderImpl>
-    implements _$$SliderImplCopyWith<$Res> {
-  __$$SliderImplCopyWithImpl(
-    _$SliderImpl _value,
-    $Res Function(_$SliderImpl) _then,
+class __$$SliderTypeImplCopyWithImpl<$Res>
+    extends _$InfoActionCopyWithImpl<$Res, _$SliderTypeImpl>
+    implements _$$SliderTypeImplCopyWith<$Res> {
+  __$$SliderTypeImplCopyWithImpl(
+    _$SliderTypeImpl _value,
+    $Res Function(_$SliderTypeImpl) _then,
   ) : super(_value, _then);
 
   /// Create a copy of InfoAction
@@ -924,27 +953,32 @@ class __$$SliderImplCopyWithImpl<$Res>
     Object? macro = null,
   }) {
     return _then(
-      _$SliderImpl(
-        label: null == label
-            ? _value.label
-            : label // ignore: cast_nullable_to_non_nullable
-                  as String,
-        min: null == min
-            ? _value.min
-            : min // ignore: cast_nullable_to_non_nullable
-                  as double,
-        max: null == max
-            ? _value.max
-            : max // ignore: cast_nullable_to_non_nullable
-                  as double,
-        value: null == value
-            ? _value.value
-            : value // ignore: cast_nullable_to_non_nullable
-                  as double,
-        macro: null == macro
-            ? _value.macro
-            : macro // ignore: cast_nullable_to_non_nullable
-                  as Macro,
+      _$SliderTypeImpl(
+        label:
+            null == label
+                ? _value.label
+                : label // ignore: cast_nullable_to_non_nullable
+                    as String,
+        min:
+            null == min
+                ? _value.min
+                : min // ignore: cast_nullable_to_non_nullable
+                    as double,
+        max:
+            null == max
+                ? _value.max
+                : max // ignore: cast_nullable_to_non_nullable
+                    as double,
+        value:
+            null == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                    as double,
+        macro:
+            null == macro
+                ? _value.macro
+                : macro // ignore: cast_nullable_to_non_nullable
+                    as Macro,
       ),
     );
   }
@@ -961,9 +995,10 @@ class __$$SliderImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$SliderImpl implements Slider {
-  const _$SliderImpl({
+
+@JsonSerializable(explicitToJson: true)
+class _$SliderTypeImpl implements SliderType {
+  const _$SliderTypeImpl({
     required this.label,
     required this.min,
     required this.max,
@@ -972,8 +1007,8 @@ class _$SliderImpl implements Slider {
     final String? $type,
   }) : $type = $type ?? 'slider';
 
-  factory _$SliderImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SliderImplFromJson(json);
+  factory _$SliderTypeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SliderTypeImplFromJson(json);
 
   @override
   final String label;
@@ -998,7 +1033,7 @@ class _$SliderImpl implements Slider {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SliderImpl &&
+            other is _$SliderTypeImpl &&
             (identical(other.label, label) || other.label == label) &&
             (identical(other.min, min) || other.min == min) &&
             (identical(other.max, max) || other.max == max) &&
@@ -1015,8 +1050,8 @@ class _$SliderImpl implements Slider {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SliderImplCopyWith<_$SliderImpl> get copyWith =>
-      __$$SliderImplCopyWithImpl<_$SliderImpl>(this, _$identity);
+  _$$SliderTypeImplCopyWith<_$SliderTypeImpl> get copyWith =>
+      __$$SliderTypeImplCopyWithImpl<_$SliderTypeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1076,9 +1111,9 @@ class _$SliderImpl implements Slider {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Buttons value) buttons,
-    required TResult Function(Text value) text,
-    required TResult Function(Slider value) slider,
+    required TResult Function(ButtonsType value) buttons,
+    required TResult Function(TextType value) text,
+    required TResult Function(SliderType value) slider,
   }) {
     return slider(this);
   }
@@ -1086,9 +1121,9 @@ class _$SliderImpl implements Slider {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Buttons value)? buttons,
-    TResult? Function(Text value)? text,
-    TResult? Function(Slider value)? slider,
+    TResult? Function(ButtonsType value)? buttons,
+    TResult? Function(TextType value)? text,
+    TResult? Function(SliderType value)? slider,
   }) {
     return slider?.call(this);
   }
@@ -1096,9 +1131,9 @@ class _$SliderImpl implements Slider {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Buttons value)? buttons,
-    TResult Function(Text value)? text,
-    TResult Function(Slider value)? slider,
+    TResult Function(ButtonsType value)? buttons,
+    TResult Function(TextType value)? text,
+    TResult Function(SliderType value)? slider,
     required TResult orElse(),
   }) {
     if (slider != null) {
@@ -1109,20 +1144,21 @@ class _$SliderImpl implements Slider {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SliderImplToJson(this);
+    return _$$SliderTypeImplToJson(this);
   }
 }
 
-abstract class Slider implements InfoAction {
-  const factory Slider({
+abstract class SliderType implements InfoAction {
+  const factory SliderType({
     required final String label,
     required final double min,
     required final double max,
     required final double value,
     required final Macro macro,
-  }) = _$SliderImpl;
+  }) = _$SliderTypeImpl;
 
-  factory Slider.fromJson(Map<String, dynamic> json) = _$SliderImpl.fromJson;
+  factory SliderType.fromJson(Map<String, dynamic> json) =
+      _$SliderTypeImpl.fromJson;
 
   String get label;
   double get min;
@@ -1133,6 +1169,6 @@ abstract class Slider implements InfoAction {
   /// Create a copy of InfoAction
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SliderImplCopyWith<_$SliderImpl> get copyWith =>
+  _$$SliderTypeImplCopyWith<_$SliderTypeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
