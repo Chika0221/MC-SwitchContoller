@@ -9,6 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:switch_controller/infrastructure/providers/connect_provider.dart';
 import 'package:switch_controller/infrastructure/providers/route_provider.dart';
 import 'package:switch_controller/main.dart';
+import 'package:switch_controller/pages/dock_page/widgets/copy_box.dart';
 import 'package:switch_controller/pages/dock_page/widgets/dock_item_container.dart';
 import 'package:switch_controller/pages/dock_page/widgets/two_style_clocks.dart';
 import 'package:switch_controller/widgets/connect_state_container.dart';
