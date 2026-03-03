@@ -32,10 +32,21 @@ class ConnectableNotifier extends AsyncNotifier<List<Connect>> {
 
 class ConnectNotifier extends Notifier<Connect?> {
   final connect_collection = FirebaseFirestore.instance.collection('connect');
+  StreamSubscription<DocumentSnapshot>? _subscription;
 
   @override
   Connect? build() {
+    ref.onDispose(() => _subscription?.cancel());
     return null;
+  }
+
+  void _startListening(String hostID) {
+    _subscription?.cancel();
+    _subscription = connect_collection.doc(hostID).snapshots().listen((doc) {
+      if (doc.exists && doc.data() != null) {
+        state = Connect.fromJson(doc.data() as Map<String, dynamic>);
+      }
+    });
   }
 
   Future<void> sendMacro(Macro macro) async {
@@ -62,12 +73,17 @@ class ConnectNotifier extends Notifier<Connect?> {
       state: ConnectState.ready,
     );
 
-    await updateConnect(connect);
+    await connect_collection.doc(connect.hostID).update(connect.toJson());
+    _subscription?.cancel();
+    _subscription = null;
     state = null;
   }
 
   void setConnect(Connect connect) {
     state = connect;
+    if (connect.hostID != null) {
+      _startListening(connect.hostID!);
+    }
   }
 
   Future<void> connect(Connect connect) async {
@@ -84,7 +100,7 @@ class ConnectNotifier extends Notifier<Connect?> {
 
   Future<void> updateConnect(Connect connect) async {
     await connect_collection.doc(connect.hostID).update(connect.toJson());
-    setConnect(connect);
+    state = connect;
   }
 }
 
