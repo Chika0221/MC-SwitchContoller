@@ -100,7 +100,7 @@ class ConnectNotifier extends Notifier<Connect?> {
 
   Future<void> updateConnect(Connect connect) async {
     await connect_collection.doc(connect.hostID).update(connect.toJson());
-    state = connect;
+    setConnect(connect);
   }
 }
 
