@@ -26,6 +26,8 @@ class CopyBox extends HookConsumerWidget {
           onTap: () => ref.read(connectProvider.notifier).sendMacro(macro),
           child: Text(
             text,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(
               context,
             ).textTheme.headlineMedium?.copyWith(color: colorScheme.surface),

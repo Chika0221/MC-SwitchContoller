@@ -26,6 +26,7 @@ class TwoStyleClocks extends HookConsumerWidget {
     return CarouselView.weighted(
       backgroundColor: Colors.transparent,
       flexWeights: [1],
+      itemSnapping: true,
       children: [
         Center(
           child: Text(

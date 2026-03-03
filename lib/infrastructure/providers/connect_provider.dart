@@ -42,7 +42,7 @@ class ConnectNotifier extends Notifier<Connect?> {
     if (state == null) return;
     final connect = state!.copyWith(macroQueue: [...?state?.macroQueue, macro]);
 
-    await updateConnect(connect);
+    await connect_collection.doc(connect.hostID).update(connect.toJson());
   }
 
   Future<void> sendWorkflow(Workflow workflow) async {
@@ -51,7 +51,7 @@ class ConnectNotifier extends Notifier<Connect?> {
       workflowQueue: [...?state?.workflowQueue, workflow],
     );
 
-    await updateConnect(connect);
+    await connect_collection.doc(connect.hostID).update(connect.toJson());
   }
 
   Future<void> disconnect() async {
@@ -66,7 +66,7 @@ class ConnectNotifier extends Notifier<Connect?> {
     state = null;
   }
 
-  Future<void> setConnect(Connect connect) async {
+  void setConnect(Connect connect) {
     state = connect;
   }
 
