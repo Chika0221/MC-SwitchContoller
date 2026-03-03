@@ -24,11 +24,11 @@ class CopyBox extends HookConsumerWidget {
 
     Future<void> textFromPhone() async {
       final clipboardData = await Clipboard.getData('text/plain');
-      if (clipboardData == null) return;
-      final text = clipboardData.text;
+      final text = clipboardData?.text;
+      if (text == null) return;
 
       final editingAction = InfoAction.text(
-        text: text!,
+        text: text,
         macro: Macro(name: text, type: MacroType.text, text: text),
       );
 
