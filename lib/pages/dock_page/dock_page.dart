@@ -14,6 +14,7 @@ import 'package:switch_controller/models/macro.dart';
 import 'package:switch_controller/pages/dock_page/widgets/buttons_box.dart';
 import 'package:switch_controller/pages/dock_page/widgets/copy_box.dart';
 import 'package:switch_controller/pages/dock_page/widgets/dock_item_container.dart';
+import 'package:switch_controller/pages/dock_page/widgets/slider_box.dart';
 import 'package:switch_controller/pages/dock_page/widgets/two_style_clocks.dart';
 import 'package:switch_controller/widgets/connect_state_container.dart';
 
