@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 // Package imports:
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 // Project imports:
 import 'package:switch_controller/pages/connect_page/connect_page.dart';
@@ -28,6 +29,8 @@ final routeProvider = Provider((ref) {
           ]);
 
           SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+          WakelockPlus.disable();
 
           return HomePage(stfulNavigationShell: navigationShell);
         },
@@ -60,6 +63,8 @@ final routeProvider = Provider((ref) {
             DeviceOrientation.landscapeLeft,
             DeviceOrientation.landscapeRight,
           ]);
+
+          WakelockPlus.enable();
 
           return DockPage();
         },

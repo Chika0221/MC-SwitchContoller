@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 // Project imports:
 import 'package:switch_controller/infrastructure/providers/connect_provider.dart';
 import 'package:switch_controller/infrastructure/providers/route_provider.dart';
-import 'package:switch_controller/models/connect.dart';
+import 'package:switch_controller/models/connect.dart' hide Text;
 
 class ConnectPage extends HookConsumerWidget {
   const ConnectPage({super.key});
@@ -47,8 +47,14 @@ class ConnectPage extends HookConsumerWidget {
           await ref.read(connectableProvider.notifier).refresh();
         },
         child: connectableList.when(
-          error: (error, stackTrace) =>
-              Center(child: Text('エラーが発生しました: $error')),
+          error: (error, stackTrace) => Center(
+            child: Text(
+              'エラーが発生しました: $error',
+              style: Theme.of(
+                context,
+              ).textTheme.headlineSmall?.copyWith(color: colorScheme.primary),
+            ),
+          ),
           loading: () => const Center(child: CircularProgressIndicator()),
           data: (data) {
             final filterdList = data

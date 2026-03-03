@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import 'package:switch_controller/infrastructure/providers/connect_provider.dart';
-import 'package:switch_controller/models/connect.dart';
+import 'package:switch_controller/models/connect.dart' hide Text;
 
 class ConnectStateContainer extends HookConsumerWidget {
   const ConnectStateContainer({super.key});

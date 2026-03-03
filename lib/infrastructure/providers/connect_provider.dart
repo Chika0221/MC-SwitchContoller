@@ -32,17 +32,28 @@ class ConnectableNotifier extends AsyncNotifier<List<Connect>> {
 
 class ConnectNotifier extends Notifier<Connect?> {
   final connect_collection = FirebaseFirestore.instance.collection('connect');
+  StreamSubscription<DocumentSnapshot>? _subscription;
 
   @override
   Connect? build() {
+    ref.onDispose(() => _subscription?.cancel());
     return null;
+  }
+
+  void _startListening(String hostID) {
+    _subscription?.cancel();
+    _subscription = connect_collection.doc(hostID).snapshots().listen((doc) {
+      if (doc.exists && doc.data() != null) {
+        state = Connect.fromJson(doc.data() as Map<String, dynamic>);
+      }
+    });
   }
 
   Future<void> sendMacro(Macro macro) async {
     if (state == null) return;
     final connect = state!.copyWith(macroQueue: [...?state?.macroQueue, macro]);
 
-    await updateConnect(connect);
+    await connect_collection.doc(connect.hostID).update(connect.toJson());
   }
 
   Future<void> sendWorkflow(Workflow workflow) async {
@@ -51,7 +62,7 @@ class ConnectNotifier extends Notifier<Connect?> {
       workflowQueue: [...?state?.workflowQueue, workflow],
     );
 
-    await updateConnect(connect);
+    await connect_collection.doc(connect.hostID).update(connect.toJson());
   }
 
   Future<void> disconnect() async {
@@ -62,12 +73,17 @@ class ConnectNotifier extends Notifier<Connect?> {
       state: ConnectState.ready,
     );
 
-    await updateConnect(connect);
+    await connect_collection.doc(connect.hostID).update(connect.toJson());
+    _subscription?.cancel();
+    _subscription = null;
     state = null;
   }
 
-  Future<void> setConnect(Connect connect) async {
+  void setConnect(Connect connect) {
     state = connect;
+    if (connect.hostID != null) {
+      _startListening(connect.hostID!);
+    }
   }
 
   Future<void> connect(Connect connect) async {
